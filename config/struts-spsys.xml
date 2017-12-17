@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="spsys" extends="global">
+		<action name="listTaskInfo" class="spSysAction" method="listTaskInfo">
+			<result>/jsp/spsys/flow/listTaskInfo.jsp</result>
+		</action>
+		<action name="addTaskInfo" class="spSysAction" method="addTaskInfo">
+			<result>/jsp/spsys/flow/addCertTaskInfo.jsp</result>
+		</action>
+		<action name="saveCertTaskInfo" class="spSysAction" method="saveCertTaskInfo"></action>
+		<action name="deleteTaskInfo" class="spSysAction" method="deleteTaskInfo">
+		</action>
+		
+		<action name="checkFlow" class="spSysAction" method="checkFlow">
+			<result>/jsp/spsys/flow/checkFlow.jsp</result>
+		</action>
+		<action name="sqlImport" class="spSysAction" method="sqlImport">
+		 	<result>/jsp/spsys/flow/sqlImprot.jsp</result>
+		</action>
+		<action name="dataImpWord" class="spSysAction" method="dataImpWord"></action>
+		
+		<action name="listUnit" class="spSysAction" method="listUnit">
+			<result>/jsp/spsys/unit/listUnit.jsp</result>
+		</action>
+		<action name="addUnit" class="spSysAction" method="addUnit">
+			<result>/jsp/spsys/unit/addUnit.jsp</result>
+		</action>
+		<action name="saveUnit" class="spSysAction" method="saveUnit"></action>
+		<action name="deleteUnit" class="spSysAction" method="deleteUnit"></action>
+		<action name="ajaxCertScore" class="spSysAction" method="ajaxCertScore"></action>
+		<action name="exportSMJY" class="spSysAction" method="exportSMJY"></action>
+		<action name="exportSMSCJLD" class="spSysAction" method="exportSMSCJLD"></action>
+		<action name="exportSLD" class="spSysAction" method="exportSLD"></action>
+		<action name="exportBSLYJ" class="spSysAction" method="exportBSLYJ"></action>
+		<action name="exportCLBZTZS" class="spSysAction" method="exportCLBZTZS"></action>
+		<action name="listAlreadyList" class="spSysAction" method="listAlreadyList">
+		</action>
+		<action name="updateCertificationAffirm" class="spSysAction" method="updateCertificationAffirm">
+		</action>
+	</package>
+</struts>

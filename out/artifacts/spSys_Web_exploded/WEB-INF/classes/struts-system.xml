@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="system" extends="global">
+		<action name="*User" class="userAction" method="{1}User"></action>
+	    <action name="*Code*" class="codeAction" method="{1}Code{2}"></action>
+	    <action name="*DictComm" class="dictCommAction" method="{1}DictComm"></action>
+	    <action name="*FuncInfo" class="funcInfoAction" method="{1}FuncInfo"></action>
+		<action name="*FuncGroup" class="funcGroupAction" method="{1}FuncGroup"></action>
+		<action name="*Log" class="loginfoAction" method="{1}Log"></action>
+		<action name="*OperationRole" class="operationRoleAction" method="{1}OperationRole"></action>
+		<action name="listUserExportExcel" class="userAction" method="listUserExportExcel"></action>
+		<action name="listOperationRoleExportExcel" class="operationRoleAction" method="listOperationRoleExportExcel"></action>
+
+		<action name="listFuncInfoExportExcel" class="funcInfoAction" method="listFuncInfoExportExcel"></action>
+		<action name="mainWork" class="loginAction" method="mainWork"></action>
+		
+	</package>
+</struts>

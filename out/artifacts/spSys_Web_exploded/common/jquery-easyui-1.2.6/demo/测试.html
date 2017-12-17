@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>ComboBox - jQuery EasyUI Demo</title>
+	<link rel="stylesheet" type="text/css" href="../themes/default/easyui.css">
+	<link rel="stylesheet" type="text/css" href="../themes/icon.css">
+	<link rel="stylesheet" type="text/css" href="demo.css">
+	<script type="text/javascript" src="../jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="../jquery.easyui.min.js"></script>
+	<script>
+		function loadData(){
+			$('#cc').combobox({
+				url:'combobox_data.json',
+				valueField:'id',
+				textField:'text'
+			});
+		}
+		function setValue(){
+			$('#cc').combobox('setValue','bitem3');
+		}
+		function getValue(){
+			var val = $('#cc').combobox('getValue');
+			alert(val);
+		}
+		function disable(){
+			$('#cc').combobox('disable');
+		}
+		function enable(){
+			$('#cc').combobox('enable');
+		}
+		function showDiv(){
+			$("#d2").dialog('open');
+		}
+		$(document).ready(function() {
+			$("#d2").dialog('close');
+		});	
+	</script>
+</head>
+<body>
+	<h2>测试案例</h2>
+	<div class="demo-info">
+		<div class="demo-tip icon-tip"></div>
+		<div>关注军工单位选择及单位信息显示</div>
+	</div>
+
+	<p>军工单位名称: </p>
+	<select id="cc" class="easyui-combobox" name="state" style="width:200px;" required="true" >
+		<option></option>
+		<option value="AL">中国航天科技集团公司     </option>
+		<option value="AK">中国航天科工集团公司 </option>
+		<option value="AZ">中国航空工业集团公司 </option>
+		<option value="AR">中国船舶工业集团公司 </option>
+		<option value="CA">中国船舶重工集团公司 </option>
+		<option value="CO">中国兵器工业集团公司 </option>
+		<option value="CT">中国兵器装备集团公司 </option>
+		<option value="DE">中国核工业集团公司</option>
+		<option value="FL">中国核工业建设集团公司</option>
+	<option value="GA">中国电子科技集团公司 </option>
+
+	</select>
+	<input type="button" value="确定" onclick="showDiv()">
+	<div id="d2" class="easyui-dialog" title="单位信息" style="width:400px;height:200px;left:350px;top:120px;padding:10px;"
+			toolbar="#dlg-toolbar" buttons="#dlg-buttons" resizable="true">
+		单位名称：中国航天科技集团公司 <br>单位地址：北京市宣武区<br>单位电话 010-12345678<br>
+	</div>
+	<div id="dlg-toolbar" style="padding:2px 0">
+		<table cellpadding="0" cellspacing="0" style="width:100%">
+			<tr>
+				<td style="">
+					<a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true">隶属关系</a>
+				</td>
+				<td style="">
+					<a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true">保密检查</a>
+				</td>
+			<td style="">
+					<a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true">保密认证</a>
+			</td>
+			</tr>
+		</table>
+	</div>
+	<div id="dlg-buttons">
+		<a href="#" class="easyui-linkbutton" onclick="javascript:alert('save')">确定</a>
+		<a href="#" class="easyui-linkbutton" onclick="javascript:$('#d2').dialog('close')">关闭</a>
+	</div>
+
+</body>
+</html>

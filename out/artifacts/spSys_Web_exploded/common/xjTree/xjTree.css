@@ -1,0 +1,13 @@
+.treeBorder li{
+   list-style:none;
+   padding:0;
+   line-height:14px;
+   margin:0;
+   
+}
+.treeBorder ul{
+   text-align:left; list-style:none; margin:0; padding:0px  0px 0px 15px; list-style:none;
+}
+span{
+	cursor:pointer;
+}

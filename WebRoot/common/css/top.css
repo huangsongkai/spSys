@@ -1,0 +1,58 @@
+body {
+   background:url(../../images/top/01_02.png) top repeat-x;
+   font-size:12px;
+   background:#e1edfc;
+   margin:0;
+   clear:#15428b;
+}
+#menu{
+	background-image:url(../../images/top/menuBg.gif);
+	background-repeat:repeat-x;
+	width:100%;
+	height:30px;
+	color:#15428b;
+}
+.Sliding_tab{width:100%;position:relative;left:15px;top:10px;cursor:pointer;} 
+.Sliding_tab span {height:18px; position:relative; top:7px;}
+.Sliding_tab ul{list-style:none;margin: 0;padding: 0;}
+.Sliding_tab li{float:left;height:27px;list-style:none;text-align:center; position:relative;top:-7px;}
+.currentTab_l{ width:10px; background-image:url(../../images/top/currentMenu_l.jpg); background-repeat:no-repeat;}
+.currentTab_center{background-image:url(../../images/top/currentMenu_center.jpg); background-repeat:repeat-x;}
+.currentTab_r{ width:10px; background-image:url(../../images/top/currentMenu_r.jpg); background-repeat:no-repeat;}
+.noSelectTab_l{ width:10px; background-image:url(../../images/top/noSelectMenuBg.jpg); background-repeat:repeat-x;}
+.noSelectTab_center{background-image:url(../../images/top/noSelectMenuBg.jpg); background-repeat:repeat-x;}
+.noSelectTab_r{ width:10px; background-image:url(../../images/top/noSelectMenuBg.jpg); background-repeat:repeat-x;}
+.mouseOverTab_l{ width:10px;background-image:url(../../images/top/mouseOverMenuBg_l.jpg); background-repeat:no-repeat;}
+.mouseOverTab_center{background-image:url(../../images/top/mouseOverMenuBg.jpg); background-repeat:repeat-x;}
+.mouseOverTab_r{ width:10px;background-image:url(../../images/top/mouseOverMenuBg_r.jpg); background-repeat:no-repeat;}
+
+
+
+#icoBar{background-image:url(../../images/top/icoBar.gif);background-repeat:repeat-x;width:100%;height:90px;color:#15428b;}
+.detailUL {background-image:url(../../images/top/icoBar_bg.jpg); background-repeat:repeat-x; height:88px;}
+
+.icoUl{list-style:none;margin: 0;padding: 0;}
+.icoUl li{float:left;width:72px;height:70px;padding:0px 5px 0; list-style:none;text-align:center;}
+.detailUL li a{position:relative;top:12px;}
+.groupText{width:100%;text-align:center;height:10px;}
+
+
+.groupBorder{list-style:none;margin: 0;padding: 0;}
+.groupBorder li{float:left;list-style:none;}
+.groupBorder_left{background-image:url(../../images/top/border_l.gif);background-repeat:no-repeat;width:6px;height:90px;}
+.groupBorder_right{background-image:url(../../images/top/border_r.gif);background-repeat:no-repeat;width:6px;height:90px;}
+
+.icoBg{background:url(../../images/top/icoBg.gif) no-repeat 0px 8px;cursor:pointer;}
+.icoBg_mouseOver{background:url(../../images/top/icoBg_mouseOver.gif) no-repeat 0px 8px;cursor:pointer;}
+.icoBg_clicked{background:url(../../images/top/icoBg_clicked.gif) no-repeat 0px 8px;}
+
+/* link style */
+a:visited {color: #15428b;text-decoration: none;}
+a:active {color: #15428b;text-decoration: none;}
+a:link {color: #15428b;text-decoration: none;}
+a:hover {color: #15428b;text-decoration: none;}
+img{border:0px;}
+
+#logoMenu{ position:absolute; right:3px; top:3px; width:180px; height:25px; cursor:pointer;}
+.logoMenuBg{background-image:url(../../images/top/logo.png);}
+.logoMenuBgFocus{background-image:url(../../images/top/logo-focus.jpg);}

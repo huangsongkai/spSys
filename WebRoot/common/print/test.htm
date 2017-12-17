@@ -1,0 +1,260 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>Web打印控件-锐洋WEB打印控件 Java Web打印控件 .NET报表打印控件 ASP报表打印控件 PHP报表打印控件</TITLE>
+<STYLE type=text/css>.cssText {
+	FONT-SIZE: 12px; LINE-HEIGHT: 25px; HEIGHT: 25px
+}
+#PrintName {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #ff0000
+}
+.STYLE1 {
+	FONT-SIZE: 11px; COLOR: #00cc00
+}
+BODY {
+	FONT-SIZE: 12px
+}
+TD {
+	FONT-SIZE: 12px
+}
+TH {
+	FONT-SIZE: 12px
+}
+.STYLE2 {
+	FONT-WEIGHT: bold; COLOR: #009900
+}
+</STYLE>
+<LINK href="test_files/newstyles.css" type=text/css rel=stylesheet><LINK 
+href="test_files/ymPrompt.css" type=text/css rel=stylesheet>
+<STYLE type=text/css>.waitmessage {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 50px; PADDING-TOP: 50px; TEXT-ALIGN: center
+}
+</STYLE>
+
+<SCRIPT src="test_files/ymPrompt4.0.js" type=text/javascript></SCRIPT>
+
+<META http-equiv=Content-Type content="text/html; charset=UTF-8">
+<META content="MSHTML 6.00.2900.5726" name=GENERATOR></HEAD>
+<BODY onload=GetPrinterList();ShowFormList();>
+<object classid ="clsid:DC2A3C42-24DC-4FD6-836A-A2E8594ABC15" codebase ="/aktmxz/ReYoPrint.CAB#version=2010,428,0,2118" id="ReYoWebPrint" width="0" height="0"></object>
+
+<SCRIPT language=JavaScript type=text/javascript>
+
+//打印完成事件
+function PrintComplete()
+{
+	ymPrompt.confirmInfo('打印作业发送完毕,是否关闭当前窗口?',320,160,'提示信息',handler6);
+
+	function handler6(tp)
+	{
+		if(tp=='ok')
+		{	
+			window.close();
+		}
+	}
+}
+
+//自动打印提示
+function PrintStart()
+{
+	ymPrompt.alert({message:'打开网页后系统会自动打印当前面页',width:370,height:160,title:'提示信息'});
+}
+//设置属性
+function SetAttribute(){
+    	ReYoWebPrint.ContentURL=document.getElementById("texUrl").value;    //打印地址
+    	ReYoWebPrint.Copies =Number(document.getElementById("textCopies").value);    //'打印份数
+    	//alert(Number(document.getElementById("pageOrg").value))
+    	ReYoWebPrint.Orientation =Number(document.getElementById("pageOrg").value) //'打印方向s
+    	
+	
+	//这是新加的多URL打印
+	//ReYoWebPrint.AddUrl("http://www.baidu.com");
+	//ReYoWebPrint.AddUrl("http://www.google.com.hk");
+	//ReYoWebPrint.AddUrl("http://www.gougou.com");
+	//ReYoWebPrint.AddUrl("http://www.sougou.com");
+
+	//有选择的打印
+    	ReYoWebPrint.selectedPages = document.getElementById("SelectUsePage").checked;  
+    	ReYoWebPrint.pageFrom = Number(textForm.value);
+    	ReYoWebPrint.pageTo =  Number(textTo.value);
+
+	if(!checkbox.checked)
+	{
+		ReYoWebPrint.PaperSize = document.getElementById("textPage").value;
+    		ReYoWebPrint.pageHeight = textPageHeight.value;   //纸张高度
+    		ReYoWebPrint.pageWidth = textPageWidth.value;    //纸张宽度
+	}
+	else
+	{
+		ReYoWebPrint.PaperSize = document.getElementById("textFormName").value;
+    		ReYoWebPrint.pageHeight = textPageHeight.value;   //纸张高度
+    		ReYoWebPrint.pageWidth = textPageWidth.value;    //纸张宽度
+	}	
+	//纸张大小
+
+	//边距
+    	ReYoWebPrint.marginBottom = document.getElementById("textBottom").value;
+    	ReYoWebPrint.marginLeft =document.getElementById("textLeft").value;
+    	ReYoWebPrint.marginRight =document.getElementById("textRight").value;
+    	ReYoWebPrint.marginTop =document.getElementById("textTop").value;
+	ReYoWebPrint.ShowMargin=document.getElementById("SelectShowMagrin").checked; //是否显示边距
+	
+	//页脚页眉
+	ReYoWebPrint.header=document.getElementById("texHeader").value;  //页眉
+	ReYoWebPrint.footer=document.getElementById("texFooter").value;　　//页脚
+	ReYoWebPrint.ShowHeaderFooter=document.getElementById("SelectShowHeadfoo").checked;   //是否启用页眉页脚
+	
+	//缺省打印机
+	ReYoWebPrint.defaultPrinterName=document.getElementById("PrinterList").value;
+
+	//打印背景图片|颜色
+	ReYoWebPrint.ShowbackgroundColor=document.getElementById("ShowbackgroundColor").checked;
+	ReYoWebPrint.ShowbackgroundImage=document.getElementById("ShowbackgroundImage").checked;
+	
+	ReYoWebPrint.ZoomValue="100";   //预览比率
+	if(RadioGroup1[0].checked){
+		ReYoWebPrint.SetMarginMeasure(0);
+	}else{
+		ReYoWebPrint.SetMarginMeasure(1);
+	}
+}
+  </SCRIPT>
+<BR>
+<TABLE class=reyo-page-noprint id=mytable cellSpacing=0 cellPadding=0 
+align=center bgColor=#eae7eb>
+  <CAPTION>欢迎选用锐洋WEB打印产品,当前最新版本 2010,428,0,2118(支持IE5 IE6 IE7 IE8)</CAPTION>
+  <TBODY>
+  <TR>
+    <TH scope=col colSpan=4>打印测试</TH></TR>
+  <TR>
+    <TH class=specalt scope=row colSpan=4>打印　机: <SELECT id=PrinterList 
+      style="WIDTH: 500px" 
+      onchange=ReYoWebPrint.defaultPrinterName=this.value;ShowFormList(); 
+      name=PrinterList></SELECT></TH></TR>
+  <TR>
+    <TH class=specalt scope=row colSpan=4>纸张类型: <SELECT id=textPage 
+      style="WIDTH: 500px" name=textPage></SELECT></TH></TR>
+  <TR>
+    <TH class=specalt scope=row colSpan=4>自定义纸: <INPUT 
+      onclick="&#13;&#10;&#9;&#9;  if(!this.checked){&#13;&#10;&#9;&#9;  textFormName.disabled=true;textPageWidth.disabled=true;textPageHeight.disabled=true;&#13;&#10;&#9;&#9;  textPage.disabled=false;&#13;&#10;&#9;&#9;  }else{&#13;&#10;&#9;&#9;  textFormName.disabled=false;textPageWidth.disabled=false;textPageHeight.disabled=false;&#13;&#10;&#9;&#9;  textPage.disabled=true;&#13;&#10;&#9;&#9;  };&#13;&#10;&#9;&#9;  " 
+      type=checkbox value=checkbox name=checkbox> 　　 纸张名称: <INPUT 
+      id=textFormName disabled size=18 value=ReYoPrint自定义纸张 name=textFormName> 
+      　宽:&nbsp; <INPUT id=textPageWidth disabled size=10 value=120
+      name=textPageWidth> &nbsp;&nbsp;高: <INPUT id=textPageHeight disabled 
+      size=10 value=260 name=textPageHeight></TH></TR>
+  <TR>
+    <TH class=specalt scope=row colSpan=4>纸张边距: 上: <INPUT id=textTop size=10 
+      value=4 name=textTop> 　下: <INPUT id=textBottom size=10 value=1 
+      name=textBottom> 　　&nbsp;左: <INPUT id=textLeft size=10 value=1 
+      name=textLeft> 　右: <INPUT id=textRight size=10 value=1 
+  name=textRight></TH></TR>
+  <TR>
+    <TH class=specalt scope=row colSpan=4>打印份数: <INPUT id=textCopies size=5 
+      value=1 name=textCopies>　 　&nbsp;&nbsp;纸张方向: <SELECT class=a2 id=select 
+      name=pageOrg> <OPTION value=1 >纵向打印</OPTION> <OPTION 
+        value=2 selected>横向打印</OPTION></SELECT> 　 　 <INPUT id=SelectUsePage 
+      onclick="&#13;&#10;&#9;&#9;  if(!this.checked){&#13;&#10;&#9;&#9;  textForm.disabled=true;textTo.disabled=true;&#13;&#10;&#9;&#9;  }else{&#13;&#10;&#9;&#9;  textForm.disabled=false;textTo.disabled=false;&#13;&#10;&#9;&#9;  };&#13;&#10;&#9;&#9;  " 
+      type=checkbox value=checkbox name=SelectUsePage> 选择打印 　　 <INPUT 
+      id=textForm disabled size=5 value=1 name=textForm> To <INPUT id=textTo 
+      disabled size=5 value=2 name=textTo></TH></TR>
+  <TR>
+    <TH class=specalt scope=row colSpan=4>目标 URL: <INPUT id=texUrl 
+      style="WIDTH: 200px" value=Http://www.baidu.com 
+    name=texUrl>(地址为空控件将打印当前面页)</TH></TR>
+  <TR>
+    <TH class=specalt scope=row colSpan=4>打印背景选项: <LABEL><INPUT 
+      id=ShowbackgroundColor type=checkbox value=true 
+      name=ShowbackgroundColor>打印背景色</LABEL> <LABEL><INPUT 
+      id=ShowbackgroundImage type=checkbox value=true 
+      name=ShowbackgroundImage>打印背景图片</LABEL></TH></TR>
+  <TR>
+    <TH class=specalt scope=row colSpan=4>尺寸单位: <LABEL><INPUT type=radio 
+      CHECKED value=0 name=RadioGroup1> 毫米(mm)</LABEL> <LABEL><INPUT type=radio 
+      value=1 name=RadioGroup1> 英寸(ft)　　　　　　 <INPUT id=SelectShowMagrin 
+      type=checkbox CHECKED value=true name=SelectShowMagrin> 显示边距</LABEL> 
+      <LABEL>　　　　　 <INPUT id=SelectShowHeadfoo type=checkbox CHECKED value=true 
+      name=SelectShowHeadfoo> 启用页眉/页脚 </LABEL></TH></TR>
+  <TR>
+    <TH class=specalt scope=row colSpan=4>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD vAlign=top height=56>
+            <TABLE height=54 cellSpacing=0 cellPadding=0 width="100%" 
+              border=0><TBODY>
+              <TR>
+                <TD vAlign=top width=58>页眉设置:</TD>
+                <TD vAlign=top><TEXTAREA id=texHeader name=texHeader rows=3 cols=28>&lt;IMG src="http://www.baidu.com/img/baidu_logo.gif"width="100" height="42" border="0"&gt;&nbsp;&nbsp;&lt;span style="color:#339900;font-size:11px"&gt;&lt;strong&gt;支持html的图文并茂页眉&lt;/strong&gt;&lt;/span&gt;&lt;hr size="1" /&gt; 
+                </TEXTAREA></TD></TR></TBODY></TABLE></TD>
+          <TD vAlign=top>
+            <TABLE height=54 cellSpacing=0 cellPadding=0 width="100%" 
+              border=0><TBODY>
+              <TR>
+                <TD vAlign=top width=58>页脚设置:</TD>
+                <TD vAlign=top><TEXTAREA id=texFooter name=texFooter rows=3 cols=28>&amp;w,&amp;u,&amp;D,&amp;d,&amp;T,&amp;t,&amp;p,&amp;P,&amp;c</TEXTAREA></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TH></TR>
+  <TR>
+    <TH class=specalt scope=row colSpan=4>
+      <CENTER><INPUT class=buttonprintout id=PV onmouseover="this.className='buttonprintover'" onclick=SetAttribute();ReYoWebPrint.Preview(); onmouseout="this.className='buttonprintout'" type=button value=打印预览 name=PV> 
+<INPUT class=buttonprintout id=PR onmouseover="this.className='buttonprintover'" onclick=SetAttribute();ReYoWebPrint.ReYoPrint(); onmouseout="this.className='buttonprintout'" type=button value=打印... name=PR> 
+<INPUT class=buttonprintout id=GoPR onmouseover="this.className='buttonprintover'" onclick=SetAttribute();ReYoWebPrint.ReYoPrint(true); onmouseout="this.className='buttonprintout'" type=button value=直接打印 name=GoPR> 
+<INPUT class=buttonprintout id=cmdCancel onmouseover="this.className='buttonprintover'" onclick=ReYoWebPrint.Cancel(); onmouseout="this.className='buttonprintout'" type=button value=取消打印 name=CmdCancel></CENTER></TH></TR></TBODY></TABLE>
+<BR>
+<SCRIPT language=javascript type=text/javascript>
+//获取打印机列表
+function GetPrinterList(){
+	var i,tempStr,Op;
+	for(i=0;i<ReYoWebPrint.PrinterCount;i++){
+		tempStr=ReYoWebPrint.PrinterItem(i);
+		Op = document.createElement("option");
+		Op.text = tempStr;
+		Op.value = tempStr;
+alert(tempStr)
+		PrinterList.add(Op);
+	};
+	
+	//设置缺省打印机
+	tempStr=ReYoWebPrint.defaultPrinterName;
+
+	if(tempStr==null)
+	{
+		ymPrompt.errorInfo("请正确安装锐洋WEB打印控件",430,160,'提示信息');
+		PV.disabled=true;PR.disabled=true;GoPR.disabled=true;CmdCancel.disabled=true;
+		//document.write("<OBJECT id=\"ReYoWebPrint\" codeBase=\"http://www.interdrp.com/show/ReYoPrint.CAB#version=1,706,0,2129\" classid=\"clsid:DC2A3C42-24DC-4FD6-836A-A2E8594ABC15\" style=\"width:0px;height:0px;\"></OBJECT>");
+	} 
+
+	if(tempStr=="")
+	{
+		ymPrompt.errorInfo("您系统没有可用的打印机",430,160,'提示信息');
+		PV.disabled=true;PR.disabled=true;GoPR.disabled=true;CmdCancel.disabled=true;
+	} 
+
+	for(i=0;i<PrinterList.options.length; i++){
+		if(tempStr.indexOf(PrinterList.options(i).value)!=-1){
+			PrinterList.options[i].selected=true;
+		};
+	};
+};
+
+//设置按照打印机名/取出他支持的纸张
+function ShowFormList(){
+	
+	var i,tempStr,Op;
+	//alert(ReYoWebPrint.GetFormCount);
+	textPage.options.length=0
+	for(i=1;i<=ReYoWebPrint.GetFormCount;i++){
+		tempStr=ReYoWebPrint.FormItem(i);
+		Op = document.createElement("option");
+		Op.text = tempStr;
+		Op.value = tempStr;
+		textPage.add(Op);
+		//if(tempStr!=""){textPage.add(Op);}
+	};
+	if(textPage.options.length>=1)	textPage.options[0].selected=true;
+
+	//自动打印
+	//SetAttribute();
+	//ReYoWebPrint.ReYoPrint();
+
+};
+</SCRIPT>
+
+
+</BODY></HTML>

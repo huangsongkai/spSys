@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="censor" extends="global">
+		 <action name="listCensor" class="censorAction" method="listCensor">
+		  <result>/jsp/censor/censor/listCensor.jsp</result>
+		 </action>
+		  <action name="listReview" class="censorAction" method="listReview">
+		  <result>/jsp/censor/censor/listReview.jsp</result>
+		 </action>
+		 <action name="listCensorQuery" class="censorAction" method="listCensorQuery">
+		  <result>/jsp/censor/censor/listCensor.jsp</result>
+		 </action> 
+		 <action name="listReviewQuery" class="censorAction" method="listReviewQuery">
+		  <result>/jsp/censor/censor/listReview.jsp</result>
+		 </action>
+		 <action name="listCertConfig" class="paperAction" method="listCertConfig">
+		 <result>/jsp/censor/censor/listCertConfig.jsp</result>
+		 </action>
+		 <action name="addCert" class="paperAction" method="addCert">
+		 <result>/jsp/censor/censor/addCert.jsp</result>
+		 </action>		
+		 <action name="saveCert" class="paperAction" method="saveCert"></action>
+		 <action name="deleteCert" class="paperAction" method="deleteCert"></action>
+		 <action name="listCertTaskInfo" class="paperAction" method="listCertTaskInfo">
+		 <result>/jsp/censor/censor/listCertTaskInfo.jsp</result>
+		 </action>
+		 <action name="addCertTaskInfo" class="paperAction" method="addCertTaskInfo">
+		 <result>/jsp/censor/censor/addCertTaskInfo.jsp</result>
+		 </action>
+		  <action name="addReviewTaskInfo" class="paperAction" method="addCertTaskInfo">
+		 <result>/jsp/censor/censor/addReviewTaskInfo.jsp</result>
+		 </action>
+		 <action name="deleteCertTaskInfo" class="paperAction" method="deleteCertTaskInfo"></action>
+		 
+		 
+		 <action name="addStartCensor" class="censorAction" method="addStartCensor"></action>
+		 <action name="addEndCensor" class="censorAction" method="addEndCensor"></action>
+		  
+		 <action name="addCertTaskInfo" class="paperAction" method="addCertTaskInfo">
+		 <result>/jsp/censor/censor/addCertTaskInfo.jsp</result>
+		 </action> 
+		  
+		 <action name="listCertAnalyse" class="censorAction" method="listCertAnalyse">
+		   <result>/jsp/censor/censor/listCertAnalyse.jsp</result>                  
+		 </action>
+		 
+		 <action name="listCertAnalyse1" class="censorAction" method="listCertAnalyse1">   
+		   <result>/jsp/censor/censor/listCertAnalyse1.jsp</result>                  
+		 </action>
+		 <action name="listCertAnalyse2" class="censorAction" method="listCertAnalyse2">   
+		   <result>/jsp/censor/censor/listCertAnalyse2.jsp</result>                  
+		 </action>
+		 <action name="listCertAnalyse3" class="censorAction" method="listCertAnalyse3">   
+		   <result>/jsp/censor/censor/listCertAnalyse3.jsp</result>                  
+		 </action>
+		 <action name="listCertAnalyse4" class="censorAction" method="listCertAnalyse4">   
+		   <result>/jsp/censor/censor/listCertAnalyse4.jsp</result>                  
+		 </action>
+		 <action name="listCertAnalyse5" class="censorAction" method="listCertAnalyse5">   
+		   <result>/jsp/censor/censor/listCertAnalyse5.jsp</result>                  
+		 </action>
+		 <action name="listCertAnalyse7" class="censorAction" method="listCertAnalyse7">   
+		   <result>/jsp/censor/censor/listCertAnalyse7.jsp</result>                  
+		 </action>
+		 <action name="listCertAnalyse8" class="censorAction" method="listCertAnalyse8">   
+		   <result>/jsp/censor/censor/listCertAnalyse8.jsp</result>                  
+		 </action>
+		 
+		 <action name="CertScoreQuery" class="censorAction" method="CertScoreQuery">
+		 <result>/jsp/censor/censor/certScoreChart.jsp</result>  
+		 </action>
+		 <action name="CheckScoreQuery" class="censorAction" method="CheckScoreQuery">
+		 <result>/jsp/unit/unit/checkScoreChart.jsp</result>
+		 </action>
+		 <action name="CertScoreDetailQuery" class="censorAction" method="CertScoreDetailQuery">
+		 <result>/jsp/censor/censor/certScoreDetailChart.jsp</result>
+		 </action>
+ 		<action name="CheckScoreDetailQuery" class="censorAction" method="CheckScoreDetailQuery">
+		 <result>/jsp/unit/unit/checkScoreDetailChart.jsp</result>
+		 </action>
+		 <action name="listCheckAnalyse" class="censorAction" method="listCheckAnalyse">
+		 </action>
+		 <action name="certNumAnalyse" class="censorAction" method="certNumAnalyse">
+		 <result>/jsp/censor/count/certNumAnalyse.jsp</result>
+		 </action>
+		 <action name="certNumCount" class="censorAction" method="certNumCount">
+		 <result>/jsp/censor/count/certNumAnalyse.jsp</result>
+		 </action>
+		 
+		 <action name="saveUpLoadFile" class="censorAction" method="saveUpLoadFile"></action>
+		 
+		 <action name="ajaxDeleteFile" class="censorAction" method="ajaxDeleteFile"></action>
+		 <action name="upLoadFile" class="censorAction" method="upLoadFile">
+		 	<result>/jsp/censor/censor/upLoadFile.jsp</result>
+		 </action>
+		 
+		 <action name="listCensorStat" class="censorAction" method="listCensorStat">
+		  <result>/jsp/censor/censor/listCensorStat.jsp</result>
+		 </action>
+		 <action name="listCensorChart" class="censorAction" method="listCensorChart">
+		  <result>/jsp/censor/censor/listChart.jsp</result>
+		 </action>
+		 <action name="certTaskToWord" class="paperAction" method="certTaskToWord">
+		 <result>/jsp/censor/censor/listChart.jsp</result>
+		 </action>
+		 
+		 <action name="queryWordToCertTask" class="censorAction" method="queryWordToCertTask">
+		 </action>
+		 
+		 <action name="addCensor" class="censorAction" method="addCensor">
+		 <result>/jsp/censor/censor/addCensor.jsp</result>
+		 </action>
+		 
+		 <action name="saveCensor" class="censorAction" method="saveCensor"></action>
+
+ 		<action name="addCertScore" class="censorAction" method="addCertScore">
+		 <result>/jsp/censor/censor/addCertScore.jsp</result>
+		 </action>
+		 
+		 <action name="saveCertScore" class="censorAction" method="saveCertScore"></action>
+		 
+		 <action name="certTaskInfoImport" class="censorAction" method="certTaskInfoImport">
+		 <result>/jsp/censor/censor/certTaskInfoImport.jsp</result>  
+		 </action>
+		 <action name="wordToCertTask" class="censorAction" method="wordToCertTask"></action>
+		 <action name="listExportExcel" class="censorAction" method="listExportExcel"></action>
+		 <action name="listExportExcel2" class="censorAction" method="listExportExcel2"></action>
+		 <action name="processAddPaper" class="censorAction" method="processAddPaper">
+		 <result>/jsp/censor/censor/processAddPaper.jsp</result>
+		 </action>
+		 <action name="processAddScore" class="censorAction" method="processAddScore">
+		 <result>/jsp/censor/censor/processAddScore.jsp</result>
+		 </action>
+		 <action name="saveProcessSaveScore" class="censorAction" method="saveProcessSaveScore">
+		 </action>
+		
+		<action name="listCheckPeople" class="censorAction" method="listCheckPeople">
+		 <result>/jsp/censor/censor/listCheckPeople.jsp</result>
+		 </action>
+		 
+		 <action name="ajaxCheckPeople" class="censorAction" method="ajaxCheckPeople"></action>
+		 <action name="listTaskTODO" class="censorAction" method="listTaskTODO"></action>
+		 <action name="listCertAnalyse111" class="censorAction" method="listCertAnalyse111">   
+		   <result>/jsp/censor/censor/listCertAnalyse111.jsp</result>                  
+		 </action>
+		 <action name="listCertAnalyse112" class="censorAction" method="listCertAnalyse112">   
+		   <result>/jsp/censor/censor/listCertAnalyse112.jsp</result>                  
+		 </action>
+		 <action name="listCertAnalyse10" class="censorAction" method="listCertAnalyse10">   
+		 </action>
+		  <action name="certNumAnalyseGZL" class="censorAction" method="certNumAnalyse123456">     
+		 </action>
+		 
+		 
+		 
+		 
+	</package>
+</struts>

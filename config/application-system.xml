@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+		
+	<bean id="deptAction"
+		class="com.xunj.action.system.DeptAction"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dao" />
+		</property>
+	</bean>
+	<bean id="userAction"
+		class="com.xunj.action.system.UserAction"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dao" />
+		</property>
+	</bean>
+	<bean id="codeAction"
+		class="com.xunj.action.system.CodeAction"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dao" />
+		</property>
+	</bean>
+	<bean id="funcInfoAction"
+		class="com.xunj.action.system.FuncInfoAction"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dao" />
+		</property>
+	</bean>
+	<bean id="funcGroupAction"
+		class="com.xunj.action.system.FuncGroupAction"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dao" />
+		</property>
+	</bean>
+	<bean id="userFuncAction"
+		class="com.xunj.action.system.UserFuncAction"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dao" />
+		</property>
+	</bean>
+	<bean id="loginfoAction"
+		class="com.xunj.action.system.LogInfoAction"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dao" />
+		</property>
+	</bean>
+	<bean id="dictCommAction"
+		class="com.xunj.action.system.DictCommAction"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dao" />
+		</property>
+	</bean>
+		<!-- 统计报表Action -->
+	<bean id="statisticsAction"
+		class="com.statistics.action.base.StatisticsAction"
+		scope="prototype" >
+		<property name="dao">
+			<ref bean="dao" />
+		</property>
+	</bean>
+	<bean id="operationRoleAction"
+		class="com.xunj.action.system.OperationRoleAction"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dao" />
+		</property>
+	</bean>
+</beans>

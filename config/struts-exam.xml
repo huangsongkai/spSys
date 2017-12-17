@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="exam" extends="global">
+		<action name="addPaper" class="paperAction" method="addPaper">
+		<result>/jsp/exam/paper/addPaper.jsp</result>
+		</action>
+		<action name="editPaper" class="paperAction" method="editPaper">
+		<result>/jsp/exam/paper/editPaper.jsp</result>
+		</action>
+		<action name="listPaper" class="paperAction" method="listPaper">
+		<result>/jsp/exam/paper/listPaper.jsp</result>
+		</action>
+
+		<action name="savePaper" class="paperAction" method="savePaper">
+		</action>
+		<action name="addQuestion" class="questionAction" method="addQuestion">
+		<result>/jsp/exam/question/addQuestion.jsp</result>
+		</action>
+		<action name="deletePaper" class="paperAction" method="deletePaper">
+		</action>
+		<action name="deleteScore" class="paperAction" method="deleteScore">
+		</action>
+		<action name="listPaperScore" class="paperAction" method="listPaperScore">
+		<result>/jsp/exam/paper/listPaperScore.jsp</result>
+		</action>
+		<action name="listPaperKnowledge" class="paperAction" method="listPaperKnowledge">
+		<result>/jsp/exam/paper/listPaperKnowledge.jsp</result>
+		</action>
+		<action name="savePaperScore" class="paperAction" method="savePaperScore">
+		</action>
+		<action name="savePaperKnowledge" class="paperAction" method="savePaperKnowledge">
+		</action>
+		<action name="listQuestion" class="questionAction" method="listQuestion">
+		</action>
+   		<action name="saveQuestion" class="questionAction" method="saveQuestion">
+		</action>
+		<action name="reportExcel" class="questionAction" method="reportExcel">
+		<result>/jsp/unit/unit/listChart.jsp</result>
+		</action>
+		<action name="reportWord" class="questionAction" method="reportWord">
+		<result>/jsp/unit/unit/listChart.jsp</result>
+		</action>
+		<action name="reportExcelAnswer" class="questionAction" method="reportExcelAnswer">
+		<result>/jsp/unit/unit/listChart.jsp</result>
+		</action>
+		<action name="listQuestionInfo" class="questionAction" method="listQuestionInfo">
+		</action>
+		<action name="saveSingleQuestion" class="questionAction" method="saveSingleQuestion">
+		</action>
+		<action name="listPaperQuestion" class="questionAction" method="listPaperQuestion">
+		</action>
+		<action name="listPaperAnswer" class="questionAction" method="listPaperAnswer">
+		<result>/jsp/exam/question/listPaperAnswer.jsp</result>
+		</action>
+		
+		
+		<action name="editSingleQuestion" class="questionAction" method="editSingleQuestion">
+		<result>/jsp/exam/question/listPaperQuestion.jsp</result>
+		</action>
+		
+		<action name="addScore" class="paperAction" method="addScore">
+		<result>/jsp/exam/paper/addScore.jsp</result>
+		</action>
+		
+		<action name="saveScore" class="paperAction" method="saveScore">
+		</action>
+		<action name="saveScoreTest" class="paperAction" method="saveScoreTest">
+		</action>
+		<action name="listScore" class="paperAction" method="listScore">
+		<result>/jsp/exam/paper/listScore.jsp</result>
+		</action>
+		<action name="listScoreStatistics" class="paperAction" method="listScoreStatistics">
+		<result>/jsp/exam/paper/listScoreStatistics.jsp</result>
+		</action>
+		<action name="ajaxCheckRole" class="paperAction" method="ajaxCheckRole">
+		</action>
+		<action name="listKnowledge" class="KnowledgeAction" method="listKnowledge">
+		<result>/jsp/exam/knowledge/listKnowledgeBase.jsp</result>
+		</action>
+		<action name="addpage" class="KnowledgeAction" method="addpage">
+		<result>/jsp/exam/knowledge/addPage.jsp</result>
+		</action>	 
+		<action name="editpage" class="KnowledgeAction" method="editpage">
+		<result>/jsp/exam/knowledge/addPage.jsp</result>
+		</action>
+		<action name="addKnowledge" class="KnowledgeAction" method="addKnowledge">
+		<result>/jsp/exam/knowledge/addPage.jsp</result>
+		</action>
+		<action name="deleteKnowledge" class="KnowledgeAction" method="deleteKnowledge">
+		<result>/jsp/exam/knowledge/listKnowledgeBase.jsp</result>
+		</action>
+		
+		<action name="listStandConfig" class="paperAction" method="listStandConfig"></action>
+		<action name="addStandConfig" class="paperAction" method="addStandConfig"></action>
+		<action name="deleteStandConfig" class="paperAction" method="deleteStandConfig">
+		</action>
+		<action name="saveStandConfig" class="paperAction" method="saveStandConfig">
+		</action>
+		<action name="listStandInfo" class="paperAction" method="listStandInfo">
+		</action>
+		<action name="addStandInfo" class="paperAction" method="addStandInfo">
+		</action>
+		<action name="deleteStandInfo" class="paperAction" method="deleteStandInfo">
+		</action>
+		<action name="saveStandInfo" class="paperAction" method="saveStandInfo">
+		</action>
+		<action name="listStandStat" class="paperAction" method="listStandStat">
+		</action>
+		<action name="showDepartment" class="paperAction" method="showDepartment">
+		</action>
+		<action name="listStandStatPass" class="paperAction" method="listStandStatPass">
+		</action>
+		<action name="listStandStatUnPass" class="paperAction" method="listStandStatUnPass">
+		</action>
+	</package>
+</struts>

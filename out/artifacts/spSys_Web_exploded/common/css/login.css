@@ -1,0 +1,48 @@
+@charset "gb2312";
+body {
+	font-family: "Times New Roman", Times, serif, "����";
+	font-size: 14px;
+	line-height: 180%;
+	margin:0 auto;
+	padding:0;
+	text-align:center;
+	background: url(../../images/login/lloginbg.jpg) center;
+}
+.login{
+    background: url(../../images/login/login.jpg) center no-repeat;
+	width:1000px;
+	height:600px;
+	margin: auto;
+	position: private;
+
+}
+from{
+   margin:0;
+   padding:0;
+}
+.li{
+  text-align:left;
+  list-style:none;  
+  margin-bottom:0px;
+}
+.input{
+  width:214px;
+  height:40px;
+  background:url(../../images/login/input_bg_06.png) top repeat-x #FFF;
+  border:#CCC solid 0px;
+}
+.input_img{
+  position:absolute;
+	top:280px;
+	left:570px;
+}
+span{
+  position:absolute;
+  text-align:center;
+  color:#FFF;
+	top:415px;
+	left:470px;
+}
+.loginClass
+{	background-image: url(../../images/btn/standard.gif);
+}

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<constant name="struts.locale" value="zh_CN" />
+	<constant name="struts.i18n.encoding" value="utf-8" />
+	<constant name="struts.action.extension" value="do" />
+	<constant name="struts.devMode" value="false" />
+	<constant name="struts.multipart.maxSize" value="52428800000" />
+	
+	<include file="struts-default.xml" />
+	<include file="struts-system.xml"></include>
+	<include file="struts-exam.xml"></include>
+	<include file="struts-unit.xml"></include>
+	<include file="struts-censor.xml"></include>
+	<include file="struts-readcd.xml"></include>
+	<include file="struts-spsys.xml"></include>
+	<package name="login" extends ="struts-default">
+		<action name="login" class="loginAction" method="Login">
+		
+		<interceptor-ref name="paramsPrepareParamsStack"></interceptor-ref>
+		<result>/bridge.jsp</result>
+		</action>
+		<action name="main" class="loginAction" method="main">
+		<result name="toJsp">${jspUrl}</result>
+		<result>/testMyDwzJsp.jsp</result>
+		</action>
+		<action name="quit" class="com.xunj.action.system.QuitAction">
+		<interceptor-ref name="paramsPrepareParamsStack"></interceptor-ref>
+		<result name="toJsp">${jspUrl}</result>
+		</action>
+	</package>
+	
+    <package name ="global" extends ="struts-default"> 
+    	<interceptors>
+			<interceptor name="login" class="com.xunj.Interceptor.LoginInterceptor" />	 
+			<interceptor name="act" class="com.xunj.Interceptor.ActInterceptor" />	       
+			<interceptor-stack name="fileUploadStack">
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+			<interceptor-stack name="myLoginWebStack">
+				<interceptor-ref name="login" />
+				<interceptor-ref name="act" />				
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="myLoginWebStack" />
+    
+		<global-results>
+			<result name="login" type="redirect">/login.jsp</result>
+			<result name="relogin" type="redirect">/relogin.jsp</result>
+			<result name="message" type="redirect">/message.jsp</result>
+			<result name="toJsp">${jspUrl}</result>
+			
+		</global-results>
+       <!-- The default interceptor stack name -->
+		
+    </package >
+    <package name ="global_default" extends ="struts-default"> 
+    	<interceptors>
+			<interceptor-stack name="fileUploadStack">
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+		<global-results>
+			<result name="message" type="redirect">/message.jsp</result>
+			<result name="toJsp">${jspUrl}</result>
+			
+		</global-results>
+    </package >
+
+
+	<package name="jsp" extends="global">
+		<action name="*~*~*@*Common" class="commonAction" method="{4}">
+			<result>/jsp/{1}/{2}/{3}.jsp</result>
+		</action>
+		<action name="jump" class="com.xunj.action.common.JumpAction" method="GoUrl" />
+
+        <action name="*download" class="com.xunj.action.common.FileDownloadAction" method="{1}"> 
+            <param name="inputPath">${inputPath}</param> 
+			<result name="success" type="stream"> 
+                <param name="inputName">targetFile</param> 
+                <param name="contentDisposition">attachment;filename="${filename}"</param> 
+                <param name="bufferSize">4096</param> 
+            </result> 
+        </action> 
+	</package>
+	<package name="webUtil" extends="global_default">
+		<action name="*WebUtil" class="webUtilAction" method="{1}">
+		</action>
+        <action name="webDownload" class="com.xunj.action.common.FileDownloadAction"> 
+            <param name="inputPath">${inputPath}</param> 
+			<result name="success" type="stream"> 
+                <param name="inputName">targetFile</param> 
+                <param name="contentDisposition">attachment;filename="${filename}"</param> 
+                <param name="bufferSize">4096</param> 
+            </result> 
+        </action> 
+	</package>
+	
+	<package name="default" extends="struts-default">
+  		 <action name="download" class="com.xunj.action.common.DownloadAction">      
+      		<result type="stream">
+				<param name="contentType">application/octet-stream;charset=ISO8859-1</param>  
+				<param name="inputName">inputStream</param>      
+				<param name="contentDisposition">attachment;filename="${downloadFileName}"</param>                  
+				<param name="bufferSize">4096</param>
+			</result>
+  		 </action>
+	</package>
+
+ 
+</struts>

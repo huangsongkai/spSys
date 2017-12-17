@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+		http://www.springframework.org/schema/aop 
+		http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+		http://www.springframework.org/schema/tx 
+		http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+		
+		<import resource="application-system.xml"/>
+		<import resource="application-exam.xml"/>	
+		<import resource="application-unit.xml"/>	
+		<import resource="application-censor.xml"/> 
+		<import resource="application-readcd.xml"/> 
+		
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName">
+			<value>com.mysql.jdbc.Driver</value>
+		</property>
+		<property name="url">
+		<!-- 
+			<value>jdbc:mysql://192.168.1.107:3306/dxtbudget?useUnicode=true&amp;characterEncoding=utf-8</value>
+				-->
+			<value>jdbc:mysql://localhost:3306/spsys?useUnicode=true&amp;characterEncoding=utf-8</value>   
+		 
+		</property>
+		<property name="username">
+			<value>root</value>  
+		</property>
+		<property name="password">
+			<value>123456</value>
+		</property>
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="hibernateProperties">
+			<props>
+				<!--<prop key="hibernate.hbm2ddl.auto">create</prop>-->
+				<prop key="hibernate.show_sql">true</prop> 
+				<prop key="hibernate.format_sql">false</prop> 
+				<prop key="hibernate.use_sql_comments">false</prop>
+				<prop key="hibernate.generate_statistics">true</prop>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+			</props>
+		</property>
+        <property name="mappingDirectoryLocations">   
+            <list>   
+                <value>classpath:com/xunj/po</value>
+                <value>classpath:com/exam/po</value>
+            </list>   
+        </property> 
+	</bean>
+	
+	<!-- TransactionManager 事务管理 -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory">
+			<ref local="sessionFactory" />
+		</property>
+	</bean>
+	<!-- 使用@Transaction注解的事务管理
+		<tx:annotation-driven/>
+	-->
+	<!-- DAO -->
+	<bean id="dao" class="com.xunj.core.CoreDao">
+		<property name="factory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>	
+	<aop:config>
+		<!-- 管理事务操作 -->
+		<aop:pointcut id="servicesPointcut"
+			expression="execution(* com.xunj.action.*.*.*(..))" />
+		<aop:pointcut id="servicesPointcut1"
+			expression="execution(* com.exam.action.*.*(..))" />
+		<aop:pointcut id="servicesPointcut2" 
+			expression="execution(* com.DXTBudget.action.*.*(..))" />
+		<aop:advisor advice-ref="txAdvice"
+			pointcut-ref="servicesPointcut" />  
+		<aop:advisor advice-ref="txAdvice"
+			pointcut-ref="servicesPointcut1" />
+		<aop:advisor advice-ref="txAdvice"
+			pointcut-ref="servicesPointcut2" />
+	</aop:config>
+	<aop:aspectj-autoproxy proxy-target-class="true" />
+	<!-- 事务控制 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="query*" propagation="REQUIRED" />
+			<tx:method name="list*" propagation="REQUIRED" />
+			<tx:method name="select*" propagation="REQUIRED" />
+			<tx:method name="add*" propagation="REQUIRED" />
+			<tx:method name="save*" propagation="REQUIRED" />
+			<tx:method name="upd*" propagation="REQUIRED" />
+			<tx:method name="del*" propagation="REQUIRED" />
+			<tx:method name="remove*" propagation="REQUIRED" />
+			<tx:method name="report*" propagation="REQUIRED" />
+			<tx:method name="show*" propagation="REQUIRED" />
+			<tx:method name="detail*" propagation="REQUIRED" />
+			<tx:method name="ajax*" propagation="REQUIRED" />
+		</tx:attributes>
+	</tx:advice>
+	
+	<!-- 公共action -->
+	<bean id="commonAction"
+		class="com.xunj.action.common.CommonAction"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dao" />
+		</property>
+	</bean>
+	<!-- 公共action -->
+	<bean id="webUtilAction"
+		class="com.xunj.action.common.WebUtilAction"
+		scope="prototype">
+		<property name="dao">
+			<ref bean="dao" />
+		</property>
+	</bean>
+	<bean id="loginAction"
+		class="com.xunj.action.system.LoginAction"
+		scope="prototype" >
+		<property name="dao">
+			<ref bean="dao" />
+		</property>
+		<!--  
+		<property name="DNCdao">
+			<ref bean="DNCdao" />
+		</property>
+		-->
+	</bean>
+	<!--  
+	<bean id="abstractTag" class="com.xunj.tag.AbstractTag" scope="prototype">
+	</bean>	
+	-->
+</beans>

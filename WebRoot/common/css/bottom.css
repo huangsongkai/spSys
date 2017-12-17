@@ -1,0 +1,15 @@
+body {margin:0;background:url(../../images/bottom/think.png);font-size:12px; background-repeat:repeat-y;}
+.statusBar{background-image:url(../../images/bottom/tint.gif);background-repeat:repeat-x;height:23px;width:100%;}
+.statusBar ul{margin:0;padding:0;list-style:none;position:relative;}
+.statusBar li{float:left;text-align:left;color:#FFF;}
+#splitLine{background-image:url(../../images/bottom/split.gif);background-repeat:no-repeat;height:23px;width:2px;}
+#currentUser{color:#16458b;position:relative;top:3px;left:5px;height:23px;width:150px;}
+#currentDept{color:#16458b;position:relative;top:3px;left:5px;height:23px;width:280px;}
+#usualFeatures{color:#16458b;position:relative;top:3px;left:5px;height:23px;width:280px;}
+#rightBar{background-image:url(../../images/bottom/deepColor.gif);height:23px;width:280px;position:absolute;right:0px;}
+#dateTime{color:#16458b;position:relative;top:3px;height:23px;width:260px;text-align:right;}
+a:visited {color: #15428b;text-decoration: none;}
+a:active {color: #15428b;text-decoration: none;}
+a:link {color: #15428b;text-decoration: none;}
+a:hover {color: #15428b;text-decoration: none;}
+img{border:0px;}

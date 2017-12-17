@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="readcd" extends="global">
+		 <action name="readCdState" class="ReadcdAction" method="readCdState">
+		 <result></result>
+		 </action>
+		 
+		 
+		  <action name="TiaoZhuan" class="ReadcdAction" method="TiaoZhuan">
+		 <result>/jsp/readcd/readcdupload.jsp</result>  
+		 </action>
+		 
+		  <action name="importCdWord" class="ReadcdAction" method="importCdWord">
+		 <result></result>  
+		 </action>
+		 
+		  <action name="checkExportExcel" class="ReadcdAction" method="checkExportExcel">
+		 <result></result>  
+		 </action>
+		 
+		  <action name="taskInfoExportExcel" class="ReadcdAction" method="taskInfoExportExcel">  
+		 <result></result>  
+		 </action>
+		
+		  <action name="listAssessAnalyse6" class="ReadcdAction" method="listAssessAnalyse6">  
+		 <result>/jsp/unit/unit/listCertAnalyse6.jsp</result>    
+		 </action>
+		 
+		  <action name="listAssessAnalyse20" class="ReadcdAction" method="listAssessAnalyse20">  
+		 <result>/jsp/censor/censor/listCertAnalyse20.jsp</result>         
+		 </action>
+		 
+		  <action name="listAssessAnalyse101" class="ReadcdAction" method="listAssessAnalyse101">  
+		 <result>/jsp/unit/unit/listCertAnalyse101.jsp</result>         
+		 </action>
+		 
+		 
+		  <action name="dload" class="ReadcdAction" method="dload">    
+		 </action>
+		
+		  
+	</package>
+</struts>

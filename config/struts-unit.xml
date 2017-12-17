@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="unit" extends="global">
+		
+		<action name="saveTaskInfo" class="paperAction" method="saveTaskInfo"></action>
+		<action name="listCheckConfig" class="paperAction" method="listCheckConfig">
+		<result>/jsp/unit/unit/listCheckConfig.jsp</result>
+		</action>
+		
+		<action name="addCheck" class="paperAction" method="addCheck">
+		<result>/jsp/unit/unit/addCheck.jsp</result>
+		</action>
+		
+		<action name="saveCheck" class="paperAction" method="saveCheck"></action>
+		 <action name="deleteCheck" class="paperAction" method="deleteCheck"></action>
+		 
+		 <action name="listStat" class="paperAction" method="listStat">
+		 <result>/jsp/unit/unit/listStat.jsp</result>	
+		 </action>
+		 <action name="listChart" class="paperAction" method="listChart">
+		 <result>/jsp/unit/unit/listChart.jsp</result>
+		 </action>
+		 
+		 <action name="certificationProcess" class="unitAction" method="certificationProcess">
+		<result>/jsp/unit/unit/certificationProcess.jsp</result>
+		</action>
+		<action name="certificationAffirm" class="unitAction" method="certificationAffirm">
+		<result>/jsp/unit/unit/certificationAffirm.jsp</result>
+		</action>
+		<action name="updateCertificationAffirm" class="unitAction" method="updateCertificationAffirm">
+		</action>
+		
+		 
+		  <action name="showUnit" class="unitAction" method="showUnit">
+		 </action>
+		 
+		  
+		  <action name="manageUnit" class="unitAction" method="manageUnit">
+		  <result>/jsp/unit/unit/manageUnit.jsp</result>
+		 </action>
+		   <action name="saveManageUnit" class="unitAction" method="saveManageUnit">
+		 </action>
+		 <action name="editManageUnit" class="unitAction" method="editManageUnit">
+		  <result>/jsp/unit/unit/editManageUnit.jsp</result>
+		 </action>
+		 <action name="saveManageUnitData" class="unitAction" method="saveManageUnitData">
+		 </action>
+		 <action name="delManageUnit" class="unitAction" method="delManageUnit">
+		 </action>
+		 <action name="ajaxCertRule" class="paperAction" method="ajaxCertRule">
+		 </action>
+		  <action name="listOneUnitInfo" class="unitAction" method="listOneUnitInfo">
+		  <result>/jsp/unit/unit/listOneUnitInfo.jsp</result>
+		 </action>
+		 
+		 
+		 <action name="listTrainInfo" class="unitAction" method="listTrainInfo">
+		 <result>/jsp/unit/train/listTrainInfo.jsp</result>
+		 </action>
+		  <action name="addTrainInfo" class="unitAction" method="addTrainInfo">
+		 <result>/jsp/unit/train/addTrainInfo.jsp</result>
+		 </action>
+		  <action name="saveTrainInfo" class="unitAction" method="saveTrainInfo">
+		 </action>
+		  <action name="deleteTrainInfo" class="unitAction" method="deleteTrainInfo">
+		 </action>
+		 
+		  <action name="listStaffInfo" class="unitAction" method="listStaffInfo">
+		 <result>/jsp/unit/train/listStaffInfo.jsp</result>
+		 </action>
+		  <action name="addStaffInfo" class="unitAction" method="addStaffInfo">
+		 <result>/jsp/unit/train/addStaffInfo.jsp</result>
+		 </action>
+		  <action name="saveStaffInfo" class="unitAction" method="saveStaffInfo">
+		 </action>
+		 <action name="deleteStaffInfo" class="unitAction" method="deleteStaffInfo">
+		 </action>
+		 <action name="listCertificateValid" class="unitAction" method="listCertificateValid">
+		 </action>
+		  <action name="ajaxSuperiorInfo" class="unitAction" method="ajaxSuperiorInfo">
+		 </action>
+		 
+		 <action name="unitNumAnalyse" class="unitAction" method="unitNumAnalyse">
+		 <result>/jsp/unit/unit/unitNumAnalyse.jsp</result>
+		 </action>
+		 <action name="unitNumCount" class="unitAction" method="unitNumCount">
+		 <result>/jsp/unit/unit/unitNumAnalyse.jsp</result>  
+		 </action>
+		 
+		 <action name="DataImpExp" class="unitAction" method="DataImpExp">
+		 <result>/jsp/unit/sqlImpExp/dataImpExp.jsp</result>
+		 </action>
+		 <action name="dataExpWord" class="unitAction" method="dataExpWord">
+		 <result>/jsp/unit/sqlImpExp/listChart.jsp</result>
+		 </action>
+		 
+		 
+	</package>
+</struts>

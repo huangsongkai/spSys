@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<script type="text/javascript" src="../jquery.min.js"></script>
+ 		<script src="jquery.ui.position.js" type="text/javascript"></script>
+		<script src="jquery.contextMenu.js" type="text/javascript"></script>
+		<link href="jquery.contextMenu.css" rel="stylesheet" type="text/css" />
+		<link href="../../css/mainStyle.css" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript" class="showcase">
+			$(document).ready( function() {
+				xjContextMenu.initContextTable("tbl");
+				
+			});
+    </script>
+
+	</head>
+	
+	<body>
+		<table border="1" width="100%" id="tbl"  class="tbl">
+			<tr>
+				<td class="td_title">id</td>
+				<td class="td_title">姓名</td>
+				<td class="td_title">性别</td>
+				<td class="td_title">年龄</td>
+			</tr>
+			<tr>
+				<td class="left_align"><input type="text" name="textfield" value="1"/></td>
+				<td class="left_align"><input type="text" name="textfield" value="张明"/></td>
+				<td class="left_align">
+					<select>
+						<option>男</option>
+						<option>女</option>
+					</select></td>
+				<td class="left_align"><input type="text" name="textfield" value="38"/></td>
+			</tr>
+			<tr>
+				<td class="left_align"><input type="text" name="textfield" value="1"/></td>
+				<td class="left_align"><input type="text" name="textfield" value="李想"/></td>
+				<td class="left_align">
+					<select>
+						<option>男</option>
+						<option selected>女</option>
+					</select></td>
+				<td class="left_align"><input type="text" name="textfield" value="38"/></td>
+			</tr>
+			</table>
+		<textarea id="insertContent" style="display:none;">
+			<td class="left_align"><input type="text" name="textfield" value=""/></td>
+				<td class="left_align"><input type="text" name="textfield" value=""/></td>
+				<td class="left_align">
+					<select>
+						<option>男</option>
+						<option>女</option>
+					</select></td>
+				<td class="left_align"><input type="text" name="textfield" value=""/></td>
+		</textarea>
+
+		</body>
+</html>

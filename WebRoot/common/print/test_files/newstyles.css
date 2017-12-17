@@ -1,0 +1,42 @@
+BODY {
+	BACKGROUND: #e6eae9; FONT: 11px auto "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif; COLOR: #4f6b72
+}
+A {
+	COLOR: #c75f3e
+}
+#mytable {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; WIDTH: 750px; PADDING-TOP: 0px
+}
+CAPTION {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 5px; FONT: italic 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif; WIDTH: 700px; PADDING-TOP: 0px; TEXT-ALIGN: right
+}
+TH {
+	BORDER-RIGHT: #c1dad7 1px solid; PADDING-RIGHT: 6px; BORDER-TOP: #c1dad7 1px solid; PADDING-LEFT: 12px; BACKGROUND: url(images/bg_header.jpg) #cae8ea no-repeat; PADDING-BOTTOM: 6px; FONT: bold 11px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif; TEXT-TRANSFORM: uppercase; COLOR: #4f6b72; PADDING-TOP: 6px; BORDER-BOTTOM: #c1dad7 1px solid; LETTER-SPACING: 2px; TEXT-ALIGN: left
+}
+TH.nobg {
+	BORDER-RIGHT: #c1dad7 1px solid; BORDER-TOP: 0px; BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-LEFT: 0px
+}
+TD {
+	BORDER-RIGHT: #c1dad7 1px solid; PADDING-RIGHT: 6px; PADDING-LEFT: 12px; FONT-SIZE: 12px; BACKGROUND: #fff; PADDING-BOTTOM: 6px; COLOR: #4f6b72; PADDING-TOP: 6px; BORDER-BOTTOM: #c1dad7 1px solid
+}
+.buttonprint {
+	BORDER-RIGHT: #999999 1px solid; BORDER-TOP: #999999 1px solid; FONT-SIZE: 9pt; BORDER-LEFT: #999999 1px solid; CURSOR: hand; COLOR: black; BORDER-BOTTOM: #999999 1px solid; HEIGHT: 25px; BACKGROUND-COLOR: #efefef
+}
+.buttonprintout {
+	BORDER-RIGHT: #999999 1px solid; BORDER-TOP: #999999 1px solid; FONT-SIZE: 9pt; BORDER-LEFT: #999999 1px solid; CURSOR: hand; COLOR: black; BORDER-BOTTOM: #999999 1px solid; HEIGHT: 22px; BACKGROUND-COLOR: #efefef
+}
+.buttonprintover {
+	BORDER-RIGHT: #999999 1px solid; BORDER-TOP: #999999 1px solid; FONT-SIZE: 9pt; BORDER-LEFT: #999999 1px solid; CURSOR: hand; COLOR: black; BORDER-BOTTOM: #999999 1px solid; HEIGHT: 22px; BACKGROUND-COLOR: #a3b5ff
+}
+TD.alt {
+	BACKGROUND: #f5fafa; COLOR: #797268
+}
+TH.spec {
+	BORDER-TOP: 0px; BACKGROUND: url(images/bullet1.gif) #fff no-repeat; FONT: bold 10px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif; BORDER-LEFT: #c1dad7 1px solid
+}
+TH.specalt {
+	BORDER-TOP: 0px; BACKGROUND: url(images/bullet2.gif) #f5fafa no-repeat; FONT: bold 10px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif; BORDER-LEFT: #c1dad7 1px solid; COLOR: #797268
+}
+UNKNOWN {
+	FONT-SIZE: 11px
+}

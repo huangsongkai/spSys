@@ -1,0 +1,20 @@
+.Sliding_tab{width:100%;cursor:pointer; height:27px; background-image:url(tabBg.jpg); background-repeat:repeat-x;position:relative;} 
+.Sliding_tab span {height:18px;font-size:13px;color:#15428b;position:relative;top: 5px;}
+.Sliding_tab ul{list-style:none;margin: 0;padding: 0;}
+.Sliding_tab li{float:left;height:27px;list-style:none;text-align:center;}
+.currentTab_l{ width:10px; background-image:url(currentMenu_l.jpg); background-repeat:no-repeat;}
+.currentTab_center{background-image:url(currentMenu_center.jpg); background-repeat:repeat-x;}
+.currentTab_r{ width:10px; background-image:url(currentMenu_r.jpg); background-repeat:no-repeat;}
+.noSelectTab_l{ width:10px; background-image:url(noSelectMenuBg_l.jpg); background-repeat:no-repeat;}
+.noSelectTab_center{background-image:url(noSelectMenuBg.jpg); background-repeat:repeat-x;}
+.noSelectTab_r{ width:10px; background-image:url(noSelectMenuBg_r.jpg); background-repeat:no-repeat;}
+.mouseOverTab_l{ width:10px;background-image:url(mouseOverMenuBg_l.jpg); background-repeat:no-repeat;}
+.mouseOverTab_center{background-image:url(mouseOverMenuBg.jpg); background-repeat:repeat-x;}
+.mouseOverTab_r{ width:10px;background-image:url(mouseOverMenuBg_r.jpg); background-repeat:no-repeat;}
+.tabContent{display:none;}
+.Sliding_tab a{color:#15428b;font-size:12px;}
+.Sliding_tab a:visited{color:#15428b;font-size:12px;text-decoration:none;}
+.Sliding_tab a:active{color:#15428b;font-size:12px;text-decoration:none;}
+.Sliding_tab a:link{color:#15428b;font-size:12px;text-decoration:none;}
+.Sliding_tab a:hover{color:#15428b;font-size:12px;text-decoration:none;}
+#preloader{background-image:url(loading.gif);background-repeat: no-repeat;background-position: -5px -5px;position: absolute;top: 48%;left: 48%;z-index: 100;padding: 5px;text-align: center;background-color: #FFFFFF;border: 1px solid #92C8FA;font-size:12px;}
