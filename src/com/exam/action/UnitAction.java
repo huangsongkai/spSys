@@ -1,40 +1,28 @@
 package com.exam.action;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import com.exam.po.*;
+import com.xunj.action.common.AbstractAction;
+import com.xunj.core.Common;
+import com.xunj.core.Java2JSON;
+import com.xunj.po.UploadFile;
+import net.sf.json.JSONArray;
+import org.apache.commons.lang.StringUtils;
+import org.apache.poi.hwpf.HWPFDocument;
+
+import java.io.*;
 import java.math.BigDecimal;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
-import javax.servlet.ServletContext;
-
-import net.sf.json.JSONArray;
-
-import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.time.DateUtils;
-import org.apache.poi.hwpf.HWPFDocument;
-import org.apache.struts2.ServletActionContext;
-
-import com.exam.po.CertTaskInfo;
-import com.exam.po.CertTaskScore;
-import com.exam.po.CheckConfig;
-import com.exam.po.CheckTaskInfo;
 //import com.exam.po.StaffInfo;
-import com.exam.po.UnitInfo;
 //import com.sun.org.apache.commons.beanutils.PropertyUtils;
-import com.xunj.action.common.AbstractAction;
-import com.xunj.core.Common;
-import com.xunj.core.Java2JSON;
-import com.xunj.po.UploadFile;
-import java.sql.*;
 
 
 public class UnitAction extends AbstractAction{
@@ -91,7 +79,7 @@ public class UnitAction extends AbstractAction{
 //	public StaffInfo getStaffInfo() {
 //		return staffInfo;
 //	}
-
+//
 //	public void setStaffInfo(StaffInfo staffInfo) {
 //		this.staffInfo = staffInfo;
 //	}
@@ -505,7 +493,7 @@ public class UnitAction extends AbstractAction{
 //		this.Alert_Close("����ɹ�","ok");
 //		return  toMessage();
 //	}
-	
+//
 	public String deleteStaffInfo() throws Exception{
 		String pkStaff=request.getParameter("pkStaff");
 		dao.bulkUpdate("delete from StaffInfo where pkStaff='"+pkStaff+"'");

@@ -313,7 +313,7 @@ $(function(){
 <h2>常见问题及解决:</h2>
 <pre style="margin:5px;line-height:1.4em">
 Error loading XML document: dwz.frag.xml
-直接用IE打开index.html弹出一个对话框：Error loading XML document: dwz.frag.xml
+直接用IE打开index.html弹出一个对话框：Error loading XML document: dwz.frag.xmlc
 原因：没有加载成功dwz.frag.xml。IE ajax laod本地文件有限制, 是ie安全级别的问题, 不是框架的问题。
 解决方法：部署到apache 等 Web容器下。
 </pre>

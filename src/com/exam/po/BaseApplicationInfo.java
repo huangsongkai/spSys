@@ -70,8 +70,17 @@ public class BaseApplicationInfo extends CorePo implements java.io.Serializable 
 	private String certScore;
 	
 	private BaseInfo baseInfo;
-	
-	
+
+	private String planState;
+
+	public String getPlanState() {
+		return planState;
+	}
+
+	public void setPlanState(String planState) {
+		this.planState = planState;
+	}
+
 
 	// Constructors
 	/** default constructor */      

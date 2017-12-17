@@ -76,6 +76,7 @@ border:0px solid #b8d0d6;
 #table12 tr td{
 border:0px solid #b8d0d6;
 }
+.divcss5{ background:#F00; color:#FFF}
 </style>
 
 <div class="pageHeader" >
@@ -87,6 +88,7 @@ border:0px solid #b8d0d6;
 				<input type="hidden" name="pkbaseApp" id="pkbaseApp" value="${pkbaseApp }">
 			<div class="subBar">
 				<ul>
+
 					<li><div class="buttonActive"><div class="buttonContent"><button type="submit">点击刷新</button></div></div></li>
 				</ul>
 			</div>
@@ -105,10 +107,10 @@ border:0px solid #b8d0d6;
 						<td class="arrow11"></td>
 						<td class="arrow11"></td>
 						<td class="arrow1"></td>
-						<td class="process" style="font-size:18px;" onclick="dataImpFlow();" >导入数据<br>文件</td>
+						<td class="process" style="font-size:18px;" class="divcss5"<c:if test="${planState == '1' }">class="divcss5"</c:if> onclick="dataImpFlow();" >q导入数据<br>文件</td>
 						<td class="arrow11"></td>
 						<td class="arrow1"></td>
-						<td class="process"><a style="font-size:18px;" target="dwzExport"  href="exportSMJY.do?pkbaseApp=${pkbaseApp}" >导出书面<br>建议</a></td>  
+						<td class="process"><a style="font-size:18px;	" target="dwzExport"  href="exportSMJY.do?pkbaseApp=${pkbaseApp}" >导出书面<br>建议</a></td>
 					</tr>
 					<tr height="100px">
 						<td style="font-size:18px;"></td>

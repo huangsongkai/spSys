@@ -157,5 +157,11 @@
         <property name="certScore" type="java.lang.String">
             <column name="certScore" />
         </property>
+
+        <property name="planState" type="java.lang.String">
+            <column name="planState" />
+        </property>
+
+
     </class>
 </hibernate-mapping>

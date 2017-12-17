@@ -1,58 +1,27 @@
 package com.exam.action;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.math.BigDecimal;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
-import java.util.zip.ZipInputStream;
-
-import javax.servlet.ServletContext;
-
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
-
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.time.DateUtils;
-import org.apache.poi.hwpf.HWPFDocument;
-import org.apache.struts2.ServletActionContext;
-
-import com.exam.po.BaseApplicationInfo;
-import com.exam.po.BaseAttach;
-import com.exam.po.BaseInfo;
-import com.exam.po.BaseMtcsolPeople;
-import com.exam.po.BaseSecretPeople;
-import com.exam.po.CertConfig;
-import com.exam.po.CertConfigRule;
-import com.exam.po.CertTaskInfo;
-import com.exam.po.CertTaskScore;
-import com.exam.po.CheckConfig;
-import com.exam.po.CheckTaskInfo;
-import com.exam.po.UnitInfo;
-//import com.sun.org.apache.commons.beanutils.PropertyUtils;
+import com.exam.po.*;
 import com.xunj.action.common.AbstractAction;
 import com.xunj.core.Common;
-import com.xunj.core.Java2JSON;
-import com.xunj.po.CodeDict;
-import com.xunj.po.UploadFile;
-import java.sql.*;
+import com.xunj.util.AESUtil;
+import com.xunj.util.IOUtil;
+import com.xunj.util.RSAUtil;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.output.ByteArrayOutputStream;
+import org.apache.commons.lang.StringUtils;
+
+import java.io.*;
+import java.security.interfaces.RSAPrivateKey;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
+
+import static com.xunj.util.AESUtil.AES_CBC_Decrypt;
+
+//import com.sun.org.apache.commons.beanutils.PropertyUtils;
 
 
 public class SpSysAction extends AbstractAction{
@@ -65,8 +34,8 @@ public class SpSysAction extends AbstractAction{
 	private String docFilePath;
 	private String docContentType;
 	private String docFileName;
-	
-	
+
+
 	public String getDocFilePath() {
 		return docFilePath;
 	}
@@ -261,15 +230,20 @@ public class SpSysAction extends AbstractAction{
 	public String checkFlow() throws Exception{
 		String pkbaseApp = request.getParameter("pkbaseApp");
 		BaseApplicationInfo cti=(BaseApplicationInfo)dao.findOne(BaseApplicationInfo.class, Integer.parseInt(pkbaseApp));
-		
+
+
+
 		request.setAttribute("pkbaseApp", pkbaseApp);
+		request.setAttribute("planState", cti.getPlanState());
 		request.setAttribute("spStatus", cti.getSpStatus());
 		request.setAttribute("creditCode", cti.getCreditCode());
 		return SUCCESS;
 	}
 	public String sqlImport() throws Exception{
 //		Alert_GoUrl("导入成功", "closeCurrent","数据导入导出",null);
-//		return  toResult(); 
+//		return  toResult();
+		//dao.update()
+		//BaseApplicationInfo cti=(BaseApplicationInfo)dao.findOne(BaseApplicationInfo.class, Integer.parseInt(pkbaseApp));
 		String type = request.getParameter("type");
 		request.setAttribute("type", type);
 		return SUCCESS;
@@ -277,11 +251,48 @@ public class SpSysAction extends AbstractAction{
 	public String dataImpWord() throws Exception{
 		String type = request.getParameter("type");
 		request.setAttribute("type", type);
+
 		if (doc!=null && !"".equals(doc)) {
-		    String saveRootDirectory = "d://zipFile//";  
-			try {  
-	            // 获得zip信息  
-	            ZipFile zipFile = new ZipFile(doc);  
+			String ziptemp=request.getRealPath("ziptemp");
+		    String saveRootDirectory = "/Users/huang/kegongju/";
+			String sp=request.getRealPath("res");
+			String temp=request.getRealPath("temp");
+			System.out.println("");
+			ZipFile yuanzipFile = new ZipFile(doc.getPath());
+			Enumeration<ZipEntry> enu1 = (Enumeration<ZipEntry>) yuanzipFile.entries();
+			while (enu1.hasMoreElements()) {
+				ZipEntry zipElement1 = (ZipEntry) enu1.nextElement();
+				InputStream read = yuanzipFile.getInputStream(zipElement1);
+				String fileName = zipElement1.getName();
+				if (fileName != null && fileName.indexOf(".") != -1) {// 是否为文件
+					unZipFile1(zipElement1, read, ziptemp+"/");
+				}
+			}
+
+				try {
+				//获取私钥
+				RSAPrivateKey privateKey = RSAUtil.getPrivateKey(sp+"/private.pem");
+//				String filePath = doc.getPath();
+//				String folderPath = StringUtils.substringBeforeLast(filePath, "/");
+				//File file =  new File(ziptemp+"/key.secrete");
+				//读取已经公钥加密的AES密钥文件--记录AES加密时候产生的随机数
+				String encodedSecrete = IOUtil.getContent(ziptemp+"/key.secrete");
+				//解密该随机数
+				String secrete = RSAUtil.decrypt(encodedSecrete, privateKey);
+				//读取加密过的申请文件
+
+				byte[] encodedFileBytes = getBytes(ziptemp+"/files.kgj");
+				//文件转码和解密,输入上面解析出的随机数
+				byte[] decoded = AES_CBC_Decrypt(encodedFileBytes, AESUtil.genSkc(secrete), false);
+				FileOutputStream fileOutputStream = new FileOutputStream(new File(temp+"/temp.zip"));
+				fileOutputStream.write(decoded);
+				fileOutputStream.flush();
+					File deletefile = new File(ziptemp);
+					deleteDir(deletefile);
+
+
+				// 获得zip信息
+	            ZipFile zipFile = new ZipFile(temp+"/temp.zip");
 	            @SuppressWarnings("unchecked")  
 	            Enumeration<ZipEntry> enu = (Enumeration<ZipEntry>) zipFile.entries();  
 	            String a="";
@@ -308,6 +319,10 @@ public class SpSysAction extends AbstractAction{
 		                if(bbbi==null){
 		                	BaseInfo bi= new BaseInfo();
 		                    bi.setCompanyName(json_test.getString("companyName"));//单位名称
+							//创建单位春初文件夹
+////							File saveFile = new File("/Users/huang/kegongju");
+////							saveFile.mkdir();
+//							copyFile(file1, saveFile);
 		                    bi.setCreditCode(json_test.getString("creditCode"));//社会统一信用代码
 		                    bi.setCompanyType(json_test.getString("companyType"));//单位性质
 		                    bi.setLegalBody(json_test.getString("legalBody"));//法定代表人
@@ -327,7 +342,7 @@ public class SpSysAction extends AbstractAction{
 		                    bi.setPunishments(json_test.getString("punishments"));//证券监管机构的行政处罚情况
 		                    bi.setSummaryOfCompany(json_test.getString("summaryOfCompany"));//单位概况
 		                    dao.save(bi);
-		                    saveRootDirectory+=json_test.getString("companyName")+"//";
+		                    saveRootDirectory+=json_test.getString("companyName")+"/";
 		                }
 		                
 		                BaseApplicationInfo baii = (BaseApplicationInfo)dao.findFirst("from BaseApplicationInfo where creditCode='"+json_test.getString("creditCode")+"' and appTime='"+sdf1.format(new Date())+"' ");
@@ -419,6 +434,7 @@ public class SpSysAction extends AbstractAction{
 			                	bai.setWorkingFundsMng1(strs8.get(0)+"");//上年度至本年度保密管理经费预算和支出情况
 			                    bai.setWorkingFundsMng2(strs8.get(1)+"");//上年度至本年度保密管理经费预算和支出情况
 				            }
+							bai.setPlanState("1");
 			                a = dao.save(bai);
 		                }else{
 		                	a=baii.getPkbaseApp()+"";
@@ -506,9 +522,10 @@ public class SpSysAction extends AbstractAction{
 	            		}
 					}
 		        }
-	            
-	            
-	            
+					File deletefile1 = new File(temp);
+					deleteDir(deletefile1);
+
+
 	        } catch (Exception e) {  
 	            e.printStackTrace();  
 	        }  
@@ -524,7 +541,8 @@ public class SpSysAction extends AbstractAction{
 	        }else{
 	        	Alert_GoUrl("导入失败！", "closeCurrent","spsysCheckFlow","");	
 	        }
-		}		
+		}
+
 		return toResult();
 	}
 	//删除文件
@@ -544,7 +562,7 @@ public class SpSysAction extends AbstractAction{
 	 /** 
      *  
      * @Description: TODO(找到文件并读取解压到指定目录) 
-     * @param 设定文件 
+     * @param
      * @return void 返回类型 
      * @throws 
      */  
@@ -586,6 +604,45 @@ public class SpSysAction extends AbstractAction{
             // }  
 //      }  
     }
+
+	public void unZipFile1(ZipEntry ze, InputStream read,String saveRootDirectory) throws FileNotFoundException, IOException {
+		// 如果只读取图片，自行判断就OK.
+		String fileName = ze.getName();
+		// 判断文件是否符合要求或者是指定的某一类型
+//      if (fileName.equals("WebRoot/WEB-INF/web.xml")) {
+		// 指定要解压出来的文件格式（这些格式可抽取放置在集合或String数组通过参数传递进来，方法更通用）
+		File file = new File(saveRootDirectory + fileName);
+		if (!file.exists()) {
+			File rootDirectoryFile = new File(file.getParent());
+			// 创建目录
+			if (!rootDirectoryFile.exists()) {
+				boolean ifSuccess = rootDirectoryFile.mkdirs();
+				if (ifSuccess) {
+					System.out.println("文件夹创建成功!");
+				} else {
+					System.out.println("文件创建失败!");
+				}
+			}
+			// 创建文件
+			try {
+				file.createNewFile();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		// 写入文件
+		BufferedOutputStream write = new BufferedOutputStream(new FileOutputStream(file));
+		int cha = 0;
+		while ((cha = read.read()) != -1) {
+			write.write(cha);
+		}
+		// 要注意IO流关闭的先后顺序
+		write.flush();
+		write.close();
+		read.close();
+		// }
+//      }
+	}
     
     public String listUnit() throws Exception{
 	    StringBuilder sql = new StringBuilder();
@@ -822,5 +879,65 @@ public class SpSysAction extends AbstractAction{
 		bai.setSpStatus("0");
 		dao.update(bai);
 		return toData();
+	}
+	private byte[] getBytes(String filePath){
+		byte[] buffer = null;
+		try {
+			File file = new File(filePath);
+			FileInputStream fis = new FileInputStream(file);
+			ByteArrayOutputStream bos = new ByteArrayOutputStream(1000);
+			byte[] b = new byte[1000];
+			int n;
+			while ((n = fis.read(b)) != -1) {
+				bos.write(b, 0, n);
+			}
+			fis.close();
+			bos.close();
+			buffer = bos.toByteArray();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return buffer;
+	}
+	/**
+	 * 复制文件
+	 * @param fromFile
+	 * @param toFile
+	 * <br/>
+	 * 2016年12月19日  下午3:31:50
+	 * @throws IOException
+	 */
+	public void copyFile(File fromFile,File toFile) throws IOException{
+		FileInputStream ins = new FileInputStream(fromFile);
+		FileOutputStream out = new FileOutputStream(toFile);
+		byte[] b = new byte[1024];
+		int n=0;
+		while((n=ins.read(b))!=-1){
+			out.write(b, 0, n);
+		}
+
+		ins.close();
+		out.close();
+	}
+	/**
+	 * 递归删除目录下的所有文件及子目录下所有文件
+	 * @param dir 将要删除的文件目录
+	 * @return boolean Returns "true" if all deletions were successful.
+	 *                 If a deletion fails, the method stops attempting to
+	 *                 delete and returns "false".
+	 */
+	private static void deleteDir(File dir) {
+		File file = new File("");
+		if (dir.isDirectory()) {
+			String[] children = dir.list();
+			//递归删除目录中的子目录下
+			for (int i=0; i<children.length; i++) {
+				 deleteDir(new File(dir, children[i]));
+
+			}
+		}
+		// 目录此时为空，可以删除
 	}
 }

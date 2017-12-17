@@ -122,7 +122,7 @@
 							<div id="tableContainer">				
 									<table id="sea_box" class="searchContent">																	
 									   <tr align="center">
-									   		<td style="font-size:20px"><font color=red  >查看单位时实情况</font></td> 
+									   		<td style="font-size:20px"><font color=red 查看单位时实情况</font></td>
 									   </tr>     
 									   <tr align="center">
 											<td>
